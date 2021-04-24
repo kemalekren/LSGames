@@ -15,6 +15,9 @@
 		0AEA4275263427CF00FA68FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA4273263427CF00FA68FF /* LaunchScreen.storyboard */; };
 		0AEA4280263427CF00FA68FF /* LSGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA427F263427CF00FA68FF /* LSGamesTests.swift */; };
 		0AEA428B263427D000FA68FF /* LSGamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA428A263427D000FA68FF /* LSGamesUITests.swift */; };
+		0AEA429C2634288500FA68FF /* LSTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA429B2634288500FA68FF /* LSTabBarController.swift */; };
+		0AEA42A72634297600FA68FF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA42A62634297600FA68FF /* HomeVC.swift */; };
+		0AEA42AC2634299900FA68FF /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA42AB2634299900FA68FF /* FavoriteVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		0AEA4286263427D000FA68FF /* LSGamesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSGamesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEA428A263427D000FA68FF /* LSGamesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSGamesUITests.swift; sourceTree = "<group>"; };
 		0AEA428C263427D000FA68FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AEA429B2634288500FA68FF /* LSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSTabBarController.swift; sourceTree = "<group>"; };
+		0AEA42A62634297600FA68FF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		0AEA42AB2634299900FA68FF /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		0AEA4267263427CD00FA68FF /* LSGames */ = {
 			isa = PBXGroup;
 			children = (
+				0AEA42A52634296F00FA68FF /* Detail */,
+				0AEA42A42634296400FA68FF /* Favorite */,
+				0AEA42A32634295F00FA68FF /* Home */,
 				0AEA4268263427CD00FA68FF /* AppDelegate.swift */,
 				0AEA426A263427CD00FA68FF /* SceneDelegate.swift */,
 				0AEA426C263427CD00FA68FF /* ViewController.swift */,
@@ -106,6 +115,7 @@
 				0AEA4271263427CF00FA68FF /* Assets.xcassets */,
 				0AEA4273263427CF00FA68FF /* LaunchScreen.storyboard */,
 				0AEA4276263427CF00FA68FF /* Info.plist */,
+				0AEA429B2634288500FA68FF /* LSTabBarController.swift */,
 			);
 			path = LSGames;
 			sourceTree = "<group>";
@@ -126,6 +136,29 @@
 				0AEA428C263427D000FA68FF /* Info.plist */,
 			);
 			path = LSGamesUITests;
+			sourceTree = "<group>";
+		};
+		0AEA42A32634295F00FA68FF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0AEA42A62634297600FA68FF /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0AEA42A42634296400FA68FF /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				0AEA42AB2634299900FA68FF /* FavoriteVC.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		0AEA42A52634296F00FA68FF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AEA426D263427CD00FA68FF /* ViewController.swift in Sources */,
+				0AEA42A72634297600FA68FF /* HomeVC.swift in Sources */,
 				0AEA4269263427CD00FA68FF /* AppDelegate.swift in Sources */,
+				0AEA429C2634288500FA68FF /* LSTabBarController.swift in Sources */,
+				0AEA42AC2634299900FA68FF /* FavoriteVC.swift in Sources */,
 				0AEA426B263427CD00FA68FF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ALGWK3D6BW;
 				INFOPLIST_FILE = LSGames/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ALGWK3D6BW;
 				INFOPLIST_FILE = LSGames/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
