@@ -14,21 +14,22 @@ final class GameCell: UICollectionViewCell {
     @IBOutlet weak var gameScore: UILabel!
     @IBOutlet weak var gameCategory: UILabel!
     
+    private func getImage(data: Data?) -> UIImage? {
+        if let data = data {
+            return UIImage(data: data)
+        }
+        
+        return UIImage(named: "no-image")
+    }
+    
     var model: HomePresentation! {
         didSet{
-            if let url = model.gameImageUrl {
-                NetworkManager.shared.downloadImage(from: url) { [weak self] (image) in
-                    guard let self = self else { return }
+            NetworkManager.shared.image(imageURL: model.gameImageUrl) { data , error in
+                if let image = self.getImage(data: data) {
                     DispatchQueue.main.async {
-                        if let image = image {
-                            self.gameImage.image = image
-                        }else {
-                            self.gameImage.image = nil
-                        } 
+                        self.gameImage.image = image
                     }
                 }
-            } else {
-                self.gameImage.image = nil
             }
             
             gameTitle.text = model.gameTitle
@@ -38,7 +39,7 @@ final class GameCell: UICollectionViewCell {
             }else {
                 gameScore.text = model.gameScore
             }
-          
+            
             gameCategory.text = model.gameGenre
         }
     }
