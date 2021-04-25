@@ -24,7 +24,7 @@ final class GameCell: UICollectionViewCell {
     
     var model: HomePresentation! {
         didSet{
-            NetworkManager.shared.image(imageURL: model.gameImageUrl) { data , error in
+            NetworkManager.shared.imageDownload(imageURL: model.gameImageUrl) { data , error in
                 if let image = self.getImage(data: data) {
                     DispatchQueue.main.async {
                         self.gameImage.image = image
