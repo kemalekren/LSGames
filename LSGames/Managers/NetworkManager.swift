@@ -21,9 +21,14 @@ final class NetworkManager {
     private let api_Key = "3d52261225734aceb2646d7b2bac4953"
     private let page_size = 10
     private var gameResultsObject: GameResults?
-    let cache = NSCache<NSString, UIImage>()
+    private var images = NSCache<NSString, NSData>()
     
-    private init() {}
+    let session: URLSession
+    
+    init() {
+      let config = URLSessionConfiguration.default
+      session = URLSession(configuration: config)
+    }
     
     func getGamesWith(query: String, page: Int = 1, completion: @escaping(Result<GameResults, NetworkError>) -> Void) {
         let endpoint = baseURL + "?key=\(api_Key)&page_size=\(page_size)&page=\(page)&search=\(query)"
@@ -31,7 +36,7 @@ final class NetworkManager {
             return completion(.failure(.badURL))
         }
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        session.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil  else {
                 return completion(.failure(.noData))
             }
@@ -53,7 +58,7 @@ final class NetworkManager {
             return completion(.failure(.badURL))
         }
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        session.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil  else {
                 return completion(.failure(.noData))
             }
@@ -69,35 +74,43 @@ final class NetworkManager {
             
         }.resume()
     }
+   
+    private func download(imageURL: URL, completion: @escaping (Data?, Error?) -> (Void)) {
+      if let imageData = images.object(forKey: imageURL.absoluteString as NSString) {
+        print("using cached images")
+        completion(imageData as Data, nil)
+        return
+      }
+      
+      let task = session.downloadTask(with: imageURL) { localUrl, response, error in
+        if let error = error {
+          completion(nil, error)
+          return
+        }
+        
+        guard let localUrl = localUrl else {
+          completion(nil, NetworkError.badURL)
+          return
+        }
+        
+        do {
+          let data = try Data(contentsOf: localUrl)
+          self.images.setObject(data as NSData, forKey: imageURL.absoluteString as NSString)
+          completion(data, nil)
+        } catch let error {
+          completion(nil, error)
+        }
+      }
+      
+      task.resume()
+    }
     
-    
-    func downloadImage(from urlString: String, completion: @escaping(UIImage?) -> Void) {
-        let cacheKey = NSString(string: urlString)
+    func imageDownload(imageURL: String?, completion: @escaping (Data?, Error?) -> (Void)) {
         
-        if let image = cache.object(forKey: cacheKey) {
-            completion(image)
-            return
+        if let gameImageURL = imageURL,
+           let url = URL(string: gameImageURL) {
+            download(imageURL: url, completion: completion)
         }
-        
-        guard let url = URL(string: urlString) else {
-            completion(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self,
-                  error == nil,
-                  let response = response as? HTTPURLResponse, response.statusCode == 200,
-                  let data = data,
-                  let image = UIImage(data: data) else {
-                completion(nil)
-                return
-            }
-            
-            self.cache.setObject(image, forKey: cacheKey)
-            completion(image)
-        }
-        task.resume()
     }
 }
 
