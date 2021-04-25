@@ -46,7 +46,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TfB-Kp-Bwh">
                                             <rect key="frame" x="16" y="16" width="333" height="104"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0st-Yp-tVb">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="0st-Yp-tVb">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="104"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Gtk-Cc-ndn"/>
@@ -133,6 +133,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="no-image" width="640" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
