@@ -74,6 +74,26 @@ final class NetworkManager {
             
         }.resume()
     }
+    
+    func getGameDetailWith(_ id: String, completion: @escaping (Result<GameDetailModel, NetworkError>) -> Void) {
+        let endpoint = baseURL + "/\(id)?key=\(api_Key)"
+        guard let url = URL(string: endpoint) else {
+            return completion(.failure(.badURL))
+        }
+        
+        session.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                return completion(.failure(.noData))
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(GameDetailModel.self, from: data)
+                completion(.success(response))
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
    
     private func download(imageURL: URL, completion: @escaping (Data?, Error?) -> (Void)) {
       if let imageData = images.object(forKey: imageURL.absoluteString as NSString) {
