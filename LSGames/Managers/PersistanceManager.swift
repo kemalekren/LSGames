@@ -43,7 +43,6 @@ enum PersistanceManager {
         }
     }
     
-    
     static func retrieveFavorites(completion: @escaping (Result<[HomePresentation], LSError>) -> Void) {
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completion(.success([]))
@@ -70,6 +69,7 @@ enum PersistanceManager {
                 completion(true)
                 
             case .failure(let error):
+                print(error.localizedDescription)
                 completion(false)
             }
         }

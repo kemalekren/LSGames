@@ -14,7 +14,7 @@ private enum VCTypes: String {
 final class LSTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemGreen
+        UITabBar.appearance().tintColor = .systemBlue
         UINavigationBar.appearance().prefersLargeTitles = true
         viewControllers = [createVCs(type: .home), createVCs(type: .favorite)]
     }
@@ -24,13 +24,13 @@ final class LSTabBarController: UITabBarController {
         case .home:
             let homeVC = HomeBuilder.make()
             homeVC.title = "Games"
-            homeVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+            homeVC.tabBarItem = UITabBarItem(title: "Games", image: UIImage(named: "games"), tag: 0)
             
             return UINavigationController(rootViewController: homeVC)
         case .favorite:
             let favoriteVC = FavoriteBuilder.make()
             favoriteVC.title = "Favorite"
-            favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+            favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
             
             return UINavigationController(rootViewController: favoriteVC)
         }
