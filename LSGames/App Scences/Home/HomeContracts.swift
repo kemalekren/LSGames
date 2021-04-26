@@ -15,5 +15,4 @@ protocol HomeVMProtocol: class {
 
 protocol HomeVMOutputDelegate: class {
     func updateItems(_ items:[HomePresentation])
-    func showAlert(type: NetworkError)
 }

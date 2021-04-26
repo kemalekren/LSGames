@@ -10,8 +10,8 @@ import UIKit
 final class HomeVC: UICollectionViewController {
 
     private let cellId = "gameCell"
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var activiyIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var containerView: UIView!
+//    @IBOutlet weak var activiyIndicator: UIActivityIndicatorView!
     
     
     var vm: HomeVM! {
@@ -19,7 +19,7 @@ final class HomeVC: UICollectionViewController {
             vm.delegate = self
         }
     }
-    
+
     private var items: [HomePresentation] = []
     
     private var layout = UICollectionViewFlowLayout()
@@ -28,7 +28,6 @@ final class HomeVC: UICollectionViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureSearchBar()
-        self.containerView.alpha = 0
     }
     
     private func configureSearchBar() {
@@ -43,7 +42,13 @@ final class HomeVC: UICollectionViewController {
 
 extension HomeVC {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        if items.count == 0 {
+                collectionView.setEmptyMessage("No game has been searched.")
+            } else {
+                collectionView.restore()
+            }
+
+            return items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,8 +64,6 @@ extension HomeVC {
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            containerView.alpha = 0.7
-            activiyIndicator.startAnimating()
             vm.loadNextPage()
         }
     }
@@ -87,14 +90,7 @@ extension HomeVC: HomeVMOutputDelegate {
         self.items = items
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.containerView.alpha = 0
-            self.activiyIndicator.hidesWhenStopped = true
-            self.activiyIndicator.stopAnimating()
         }
-    }
-    
-    func showAlert(type: NetworkError) {
-        
     }
 }
 
@@ -103,7 +99,6 @@ extension HomeVC: UISearchResultsUpdating {
         if let searchText = searchController.searchBar.text,
            searchText.count > 3 {
             vm.loadWith(searchText.lowercased())
-            activiyIndicator.startAnimating()
         }
     }
 }
