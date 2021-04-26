@@ -8,14 +8,16 @@
 import Foundation
 
 struct GameDetailModel: Codable {
-    let id: String
+    let id: Int
     let name: String
+    let imageUrl: String?
     let description: String?
     let redditUrl: String?
     let websiteUrl: String?
     
     private enum CodingKeys: String, CodingKey {
         case id,name,description
+        case imageUrl = "background_image"
         case redditUrl = "reddit_url"
         case websiteUrl = "website"
     }
