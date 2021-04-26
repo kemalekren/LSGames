@@ -9,10 +9,10 @@ import UIKit
 
 final class DetailBuilder {
 
-    static func make()-> DetailVC {
+    static func makeWith(_ item: HomePresentation)-> DetailVC {
         let storyBoard = UIStoryboard(name: "DetailVC", bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
-//        viewController.vm = HomeVM()
+        viewController.vm = DetailVM(item: item)
         return viewController
     }
 }

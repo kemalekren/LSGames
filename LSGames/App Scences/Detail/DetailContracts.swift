@@ -8,12 +8,17 @@
 import Foundation
 
 protocol DetailVMProtocol: class {
-    var delegate: HomeVMOutputDelegate? { get set }
+    var delegate: DetailVMOutputDelegate? { get set }
+    var redditLink: String? { get }
+    var webSiteLink: String? { get }
+    var isFavorite: Bool { get }
     func load()
-    func loadNextPage()
+    func addToFavoriteWith()
+   
 }
 
 protocol DetailVMOutputDelegate: class {
-    func updateItems(_ items:[DetailPresentation])
+    func updateItem(_ item: DetailPresentation)
+    func updateNavigationBarItem(_ status: Bool)
     func showAlert(type: NetworkError)
 }

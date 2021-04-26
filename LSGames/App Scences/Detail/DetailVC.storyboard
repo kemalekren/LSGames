@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -17,17 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-5J-Q8l">
-                                <rect key="frame" x="0.0" y="44" width="414" height="263"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="263" id="Nno-Tw-kTf"/>
-                                    <constraint firstAttribute="width" secondItem="g5B-5J-Q8l" secondAttribute="height" multiplier="414:263" id="OXu-09-8V5"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="oWt-QA-vYV">
-                                <rect key="frame" x="16" y="323" width="382" height="239"/>
+                                <rect key="frame" x="16" y="319" width="382" height="239"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdK-aV-Ch2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdK-aV-Ch2">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Cno-Ie-Ib8"/>
@@ -41,15 +34,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="upP-9G-2GS"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment>
-                                                <string key="content">Rockstar Games went bigger, since their previous installment of the series. You get the complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old fan favorite GTA San Andreas. 561 different vehicles (including every transport you can operate)....</string>
-                                                <attributes>
-                                                    <font key="NSFont" size="12" name="SFProText-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <attributedString key="attributedText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vQc-uY-Azz">
@@ -62,14 +47,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="d01-h4-cD1"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-Kq-rL6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-Kq-rL6">
                                                 <rect key="frame" x="0.0" y="17" width="382" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="vSi-Mg-9lS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Visit reddit">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="visitRedditAction:" destination="b7E-Cf-219" eventType="touchUpInside" id="8Ok-cA-hGG"/>
@@ -82,14 +66,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="Rs9-M7-Zds"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrA-6f-u4h">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrA-6f-u4h">
                                                 <rect key="frame" x="0.0" y="70" width="382" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="5V8-H0-kOn"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Visit website">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="visitWebsiteAction:" destination="b7E-Cf-219" eventType="touchUpInside" id="Gvb-m4-D31"/>
@@ -109,38 +92,60 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qy2-fL-Rxh">
-                                <rect key="frame" x="16" y="249" width="382" height="42"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-5J-Q8l">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="zpM-YJ-OKc"/>
+                                    <constraint firstAttribute="height" constant="303" id="Nno-Tw-kTf"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Grand Theft Auto V">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="36" name="SFProDisplay-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            </imageView>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HP4-sa-vq4">
+                                <rect key="frame" x="0.0" y="151.66666666666663" width="414" height="151.33333333333337"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qy2-fL-Rxh">
+                                <rect key="frame" x="16" y="245" width="382" height="42"/>
+                                <color key="tintColor" red="0.92150276900000005" green="0.92163527010000001" blue="0.92147386070000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="tL5-uy-w2A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSv-kj-nAT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yHn-it-rjI">
+                                        <rect key="frame" x="189" y="430" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fdf-qZ-twd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oWt-QA-vYV" firstAttribute="top" secondItem="g5B-5J-Q8l" secondAttribute="bottom" constant="16" id="1yu-S7-fDd"/>
-                            <constraint firstItem="qy2-fL-Rxh" firstAttribute="leading" secondItem="Fdf-qZ-twd" secondAttribute="leading" constant="16" id="4yH-2u-15x"/>
-                            <constraint firstItem="Fdf-qZ-twd" firstAttribute="trailing" secondItem="qy2-fL-Rxh" secondAttribute="trailing" constant="16" id="Bu2-AS-gDQ"/>
+                            <constraint firstItem="HP4-sa-vq4" firstAttribute="leading" secondItem="Fdf-qZ-twd" secondAttribute="leading" id="AUX-Kw-1pI"/>
                             <constraint firstItem="g5B-5J-Q8l" firstAttribute="trailing" secondItem="Fdf-qZ-twd" secondAttribute="trailing" id="ECG-E5-iMF"/>
-                            <constraint firstItem="oWt-QA-vYV" firstAttribute="top" secondItem="qy2-fL-Rxh" secondAttribute="bottom" constant="32" id="MBC-u8-4J1"/>
-                            <constraint firstItem="g5B-5J-Q8l" firstAttribute="top" secondItem="Fdf-qZ-twd" secondAttribute="top" id="lyq-d9-FIb"/>
+                            <constraint firstItem="oWt-QA-vYV" firstAttribute="top" secondItem="HP4-sa-vq4" secondAttribute="bottom" constant="16" id="KMu-kT-vAA"/>
+                            <constraint firstItem="qy2-fL-Rxh" firstAttribute="leading" secondItem="Fdf-qZ-twd" secondAttribute="leading" constant="16" id="OYd-RX-gKR"/>
+                            <constraint firstItem="HP4-sa-vq4" firstAttribute="trailing" secondItem="Fdf-qZ-twd" secondAttribute="trailing" id="ViR-If-xVY"/>
+                            <constraint firstItem="Fdf-qZ-twd" firstAttribute="trailing" secondItem="qy2-fL-Rxh" secondAttribute="trailing" constant="16" id="fcu-A2-ddd"/>
+                            <constraint firstItem="g5B-5J-Q8l" firstAttribute="top" secondItem="Fdf-qZ-twd" secondAttribute="top" constant="-44" id="lyq-d9-FIb"/>
                             <constraint firstItem="oWt-QA-vYV" firstAttribute="leading" secondItem="Fdf-qZ-twd" secondAttribute="leading" constant="16" id="nG8-ua-IJf"/>
                             <constraint firstItem="g5B-5J-Q8l" firstAttribute="leading" secondItem="Fdf-qZ-twd" secondAttribute="leading" id="pzw-P7-m2I"/>
                             <constraint firstAttribute="trailing" secondItem="oWt-QA-vYV" secondAttribute="trailing" constant="16" id="urF-6n-7ss"/>
+                            <constraint firstItem="HP4-sa-vq4" firstAttribute="height" secondItem="g5B-5J-Q8l" secondAttribute="height" multiplier="0.5" id="wTJ-jb-X0B"/>
+                            <constraint firstItem="oWt-QA-vYV" firstAttribute="top" secondItem="qy2-fL-Rxh" secondAttribute="bottom" constant="32" id="xFl-vD-ZlH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activiyIndicator" destination="yHn-it-rjI" id="FUZ-bZ-oRs"/>
+                        <outlet property="activiyView" destination="KSv-kj-nAT" id="Ajb-pd-eVK"/>
+                        <outlet property="containerView" destination="HP4-sa-vq4" id="jMl-bZ-LdR"/>
                         <outlet property="gameDescription" destination="TkU-Cy-h18" id="5vV-lO-gzc"/>
                         <outlet property="gameImage" destination="g5B-5J-Q8l" id="892-Ff-2my"/>
                         <outlet property="gameTitle" destination="qy2-fL-Rxh" id="7me-TC-m8t"/>
@@ -152,6 +157,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="no-image" width="640" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
