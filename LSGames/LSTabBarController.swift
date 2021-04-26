@@ -28,7 +28,7 @@ final class LSTabBarController: UITabBarController {
             
             return UINavigationController(rootViewController: homeVC)
         case .favorite:
-            let favoriteVC = FavoriteVC()
+            let favoriteVC = FavoriteBuilder.make()
             favoriteVC.title = "Favorite"
             favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
             
