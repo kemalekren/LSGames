@@ -75,7 +75,7 @@ final class NetworkManager {
         }.resume()
     }
     
-    func getGameDetailWith(_ id: String, completion: @escaping (Result<GameDetailModel, NetworkError>) -> Void) {
+    func getGameDetailWith(_ id: Int, completion: @escaping (Result<GameDetailModel, NetworkError>) -> Void) {
         let endpoint = baseURL + "/\(id)?key=\(api_Key)"
         guard let url = URL(string: endpoint) else {
             return completion(.failure(.badURL))

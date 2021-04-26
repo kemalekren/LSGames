@@ -7,64 +7,80 @@
 
 import Foundation
 
-enum PersistanceActionType {
+enum PersistenceActionType {
     case add, remove
 }
 
-class PersistanceManager {
-    enum Keys: String {
-           case favorites
-       }
-       let userDefaults: UserDefaults
+enum PersistanceManager {
     
-       init(userDefaults: UserDefaults = .standard) {
-           self.userDefaults = userDefaults
-       }
+    static private let defaults = UserDefaults.standard
+    enum Keys { static let favorites = "favorites" }
     
-    func updateWith(favorite: GameModel, actionType: PersistanceActionType, completion: @escaping (LSError?) -> Void) {
+    
+    static func updateWith(favorite: HomePresentation, actionType: PersistenceActionType, completion: @escaping (LSError?) -> Void) {
         retrieveFavorites { result in
             switch result {
             case .success(var favorites):
-
+                
                 switch actionType {
                 case .add:
-                    guard !favorites.contains(where: {$0.id == favorite.id}) else {
+                    guard !favorites.contains(where: {$0.gameId == favorite.gameId}) else {
                         completion(.alreadyInFavorites)
                         return
                     }
-
+                    
+                    favorites.append(favorite)
+                    
                 case .remove:
-                    favorites.removeAll(where: {$0.id == favorite.id})
+                    favorites.removeAll { $0.gameId == favorite.gameId }
                 }
-
-                completion(self.saveToFavorites(model: favorites))
-
+                
+                completion(save(favorites: favorites))
+                
             case .failure(let error):
                 completion(error)
             }
         }
     }
     
-    func retrieveFavorites(completed: @escaping (Result<[GameModel], LSError>) -> Void) {
-        guard let favoritesData = userDefaults.object(forKey: Keys.favorites.rawValue) as? Data else {
-            completed(.success([]))
+    
+    static func retrieveFavorites(completion: @escaping (Result<[HomePresentation], LSError>) -> Void) {
+        guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
+            completion(.success([]))
             return
         }
         
         do {
             let decoder = JSONDecoder()
-            let favorites = try decoder.decode([GameModel].self, from: favoritesData)
-            completed(.success(favorites))
+            let favorites = try decoder.decode([HomePresentation].self, from: favoritesData)
+            completion(.success(favorites))
         } catch {
-            completed(.failure(.unableToFavorite))
+            completion(.failure(.unableToFavorite))
         }
     }
     
-    private func saveToFavorites(model: [GameModel]) -> LSError? {
+    static func isFavorite(favorite: HomePresentation, completion: @escaping(Bool) -> Void) {
+        retrieveFavorites { result in
+            switch result {
+            case .success(let favorites):
+                guard favorites.contains(where: {$0.gameId == favorite.gameId}) else {
+                    completion(false)
+                    return
+                }
+                completion(true)
+                
+            case .failure(let error):
+                completion(false)
+            }
+        }
+    }
+    
+    
+    static func save(favorites: [HomePresentation]) -> LSError? {
         do {
             let encoder = JSONEncoder()
-            let encodedFavorites = try encoder.encode(model)
-            userDefaults.set(encodedFavorites, forKey: Keys.favorites.rawValue)
+            let encodedFavorites = try encoder.encode(favorites)
+            defaults.set(encodedFavorites, forKey: Keys.favorites)
             return nil
         } catch {
             return .unableToFavorite
