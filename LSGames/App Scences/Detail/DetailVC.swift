@@ -96,10 +96,6 @@ extension DetailVC: DetailVMOutputDelegate {
         }
     }
     
-    func showAlert(type: NetworkError) {
- 
-    }
-    
     func updateNavigationBarItem(_ status: Bool) {
         self.navigationItem.rightBarButtonItem?.title = self.vm.isFavorite
             ? "Favorited"

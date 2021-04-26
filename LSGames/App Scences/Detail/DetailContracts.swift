@@ -20,5 +20,4 @@ protocol DetailVMProtocol: class {
 protocol DetailVMOutputDelegate: class {
     func updateItem(_ item: DetailPresentation)
     func updateNavigationBarItem(_ status: Bool)
-    func showAlert(type: NetworkError)
 }

@@ -47,13 +47,20 @@ final class DetailVM: DetailVMProtocol {
     func addToFavoriteWith() {
         if isFavorite {
             PersistanceManager.updateWith(favorite: item, actionType: .remove) { (error) in
-                print(error)
-                self.isFavorite = false
+                if error != nil {
+                    print(error!.localizedDescription)
+                }else {
+                    self.isFavorite = false
+                }
+                
             }
         } else {
             PersistanceManager.updateWith(favorite: item, actionType: .add) { (error) in
-                print(error)
-                self.isFavorite = true
+                if error != nil {
+                    print(error!.localizedDescription)
+                }else {
+                    self.isFavorite = true
+                }
             }
         }
         delegate?.updateNavigationBarItem(isFavorite)
