@@ -16,14 +16,16 @@ final class FavoriteVM: FavoriteVMProtocol {
             case .success(let items):
                 self.delegate?.updateItems(items)
             case .failure(let error):
-                self.delegate?.showAlert(type: .noData)
+                print(error.localizedDescription)
             }
         }
     }
     
     func deleteFavoriteWith(_ item: HomePresentation) {
         PersistanceManager.updateWith(favorite: item, actionType: .remove) { (error) in
-            print(error)
+            if error != nil {
+                print(error!.localizedDescription)
+            }
         }
     }
 }

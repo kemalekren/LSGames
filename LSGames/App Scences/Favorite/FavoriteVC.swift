@@ -42,7 +42,13 @@ extension FavoriteVC {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if self.items.count == 0 {
+                self.tableView.setEmptyMessage("There is no favourites found.")
+            } else {
+                self.tableView.restore()
+            }
+
+            return items.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

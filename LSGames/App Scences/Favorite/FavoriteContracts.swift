@@ -15,6 +15,5 @@ protocol FavoriteVMProtocol: class {
 
 protocol FavoriteVMOutputDelegate: class {
     func updateItems(_ items:[HomePresentation])
-    func showAlert(type: NetworkError)
 }
 
