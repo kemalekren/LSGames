@@ -9,7 +9,7 @@ import Foundation
 
 protocol HomeVMProtocol: class {
     var delegate: HomeVMOutputDelegate? { get set }
-    func load()
+    func loadWith(_ query: String)
     func loadNextPage()
 }
 

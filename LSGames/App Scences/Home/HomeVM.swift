@@ -12,8 +12,8 @@ class HomeVM: HomeVMProtocol {
     private var items: [HomePresentation] = []
     private var nextPageUrl: String?
 
-    func load() {
-        NetworkManager.shared.getGamesWith(query: "gtav") { [weak self] result in
+    func loadWith(_ query: String) {
+        NetworkManager.shared.getGamesWith(query: query) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -50,9 +50,4 @@ class HomeVM: HomeVMProtocol {
             }
         }
     }
-
-    private func getQueryStringParameter(url: String, param: String) -> String? {
-        guard let url = URLComponents(string: url) else { return nil }
-        return url.queryItems?.first(where: { $0.name == param })?.value
-      }
 }

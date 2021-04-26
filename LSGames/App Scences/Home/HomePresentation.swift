@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct HomePresentation {
+struct HomePresentation: Codable {
+    
     private let gameModel: GameModel
     
     init(gameModel: GameModel) {

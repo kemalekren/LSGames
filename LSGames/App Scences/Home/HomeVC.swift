@@ -8,6 +8,7 @@
 import UIKit
 
 final class HomeVC: UICollectionViewController {
+
     private let cellId = "gameCell"
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var activiyIndicator: UIActivityIndicatorView!
@@ -26,10 +27,16 @@ final class HomeVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        //        navigationItem.searchController = UISearchController()
-        //        collectionView.backgroundColor = .white
-        activiyIndicator.startAnimating()
-        vm.load()
+        configureSearchBar()
+        self.containerView.alpha = 0
+    }
+    
+    private func configureSearchBar() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater  = self
+        searchController.searchBar.placeholder = "Search for the games"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
 }
@@ -57,6 +64,12 @@ extension HomeVC {
             vm.loadNextPage()
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        let vc = DetailBuilder.makeWith(item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
@@ -82,6 +95,16 @@ extension HomeVC: HomeVMOutputDelegate {
     
     func showAlert(type: NetworkError) {
         
+    }
+}
+
+extension HomeVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text,
+           searchText.count > 3 {
+            vm.loadWith(searchText.lowercased())
+            activiyIndicator.startAnimating()
+        }
     }
 }
 
